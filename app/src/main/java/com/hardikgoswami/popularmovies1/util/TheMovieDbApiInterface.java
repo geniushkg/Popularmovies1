@@ -12,6 +12,6 @@ import retrofit2.http.Query;
 
 public interface TheMovieDbApiInterface {
     @GET("movie/popular")
-    Call<Result> getPopularMovies(@Query("api_key") String api_key);
+    Call<Popular> getPopularMovies(@Query("api_key") String api_key);
 
 }

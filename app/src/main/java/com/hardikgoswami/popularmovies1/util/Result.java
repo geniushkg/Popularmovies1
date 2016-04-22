@@ -5,12 +5,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Generated;
 
-@Generated("org.jsonschema2pojo")
 public class Result {
 
-    private String posterPath;
+    private String poster_path;
     private Boolean adult;
     private String overview;
     private String releaseDate;
@@ -24,24 +22,36 @@ public class Result {
     private Integer voteCount;
     private Boolean video;
     private Double voteAverage;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    /**
-     * 
-     * @return
-     *     The posterPath
-     */
-    public String getPosterPath() {
-        return posterPath;
+    @Override
+    public String toString() {
+        return "Result{" +
+                "poster_path='" + poster_path + '\'' +
+                ", adult=" + adult +
+                ", overview='" + overview + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
+                ", genreIds=" + genreIds +
+                ", id=" + id +
+                ", originalTitle='" + originalTitle + '\'' +
+                ", originalLanguage='" + originalLanguage + '\'' +
+                ", title='" + title + '\'' +
+                ", backdropPath='" + backdropPath + '\'' +
+                ", popularity=" + popularity +
+                ", voteCount=" + voteCount +
+                ", video=" + video +
+                ", voteAverage=" + voteAverage +
+                ", additionalProperties=" + additionalProperties +
+                '}';
     }
 
-    /**
-     * 
-     * @param posterPath
-     *     The poster_path
-     */
-    public void setPosterPath(String posterPath) {
-        this.posterPath = posterPath;
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    public String getPoster_path() {
+        return poster_path;
+    }
+
+    public void setPoster_path(String poster_path) {
+        this.poster_path = poster_path;
     }
 
     /**

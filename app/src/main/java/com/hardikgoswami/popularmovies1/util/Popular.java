@@ -95,4 +95,14 @@ public class Popular {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "Popular{" +
+                "page=" + page +
+                ", results=" + results +
+                ", totalResults=" + totalResults +
+                ", totalPages=" + totalPages +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }
