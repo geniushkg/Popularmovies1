@@ -14,4 +14,7 @@ public interface TheMovieDbApiInterface {
     @GET("movie/popular")
     Call<Popular> getPopularMovies(@Query("api_key") String api_key);
 
+    @GET("movie/top_rated")
+    Call<Popular> getTopRatedMovies(@Query("api_key") String api_key);
+
 }
