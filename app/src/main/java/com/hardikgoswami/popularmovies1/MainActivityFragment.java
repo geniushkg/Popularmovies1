@@ -17,6 +17,7 @@ import com.hardikgoswami.popularmovies1.util.Popular;
 import com.hardikgoswami.popularmovies1.util.Result;
 import com.hardikgoswami.popularmovies1.util.TheMovieDbApiInterface;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -39,6 +40,7 @@ public class MainActivityFragment extends Fragment {
     private Retrofit retrofit;
     private TheMovieDbApiInterface service;
     private Context context;
+    ArrayList<String> posterUrlList = new ArrayList<>();
 
     public MainActivityFragment() {
     }
@@ -60,7 +62,7 @@ public class MainActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.inject(this, rootView);
-        updateMovieAdapter();
+        mMoviePosterAdapter = new MoviePosterAdapter(getContext(), posterUrlList);
         gvMainFrag.setAdapter(mMoviePosterAdapter);
         gvMainFrag.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -68,6 +70,7 @@ public class MainActivityFragment extends Fragment {
                 Toast.makeText(context,"gridview clicked",Toast.LENGTH_SHORT).show();
             }
         });
+        updateMovieAdapter();
         return rootView;
     }
 
@@ -84,17 +87,19 @@ public class MainActivityFragment extends Fragment {
                     Popular popularMovies = response.body();
                     Log.d("TAG", "popular Movies data is :" + popularMovies.toString());
                     List<Result> resultList = popularMovies.getResults();
-                    String[] posterUrl = new String[resultList.size()];
-                    int i = 0;
+                    List<String> posterList = new ArrayList<String>();
+
                     Log.d("TAG","result size is : "+resultList.size());
-                    for (i = 0; i < resultList.size(); i++) {
-                        posterUrl[i] = " http://image.tmdb.org/t/p/w185"+resultList.get(i).getPoster_path();
-                        Log.d("TAG","poster url : "+posterUrl[i]);
+                    for (int i = 0; i < resultList.size(); i++) {
+                        posterList.add(" http://image.tmdb.org/t/p/w185"+resultList.get(i).getPoster_path());
+                        Log.d("TAG","poster url : "+ posterList.size());
                     }
-                //TODO: modify adapter class 
-                    //    mMoviePosterAdapter = new MoviePosterAdapter(posterUrl, context);
+                    mMoviePosterAdapter.clear();
+                    mMoviePosterAdapter.addAll(posterList);
                     if(mMoviePosterAdapter.isEmpty()){
                         Log.d("TAG","adapter empty");
+                    }else {
+                        Log.d("TAG","adapter not null:"+mMoviePosterAdapter.getCount());
                     }
                     mMoviePosterAdapter.notifyDataSetChanged();
                 }
@@ -112,12 +117,15 @@ public class MainActivityFragment extends Fragment {
                     Popular popularMovies = response.body();
                     Log.d("TAG", "Top Rated Movies data is :" + popularMovies.toString());
                     List<Result> resultList = popularMovies.getResults();
-                    String[] posterUrl = null;
+                    List<String> posterList = new ArrayList<String>();
+                    String[] posterUrl = new String[resultList.size()];
                     int i = 0;
                     for (i = 0; i < resultList.size(); i++) {
-                        posterUrl[i] = resultList.get(i).getPoster_path();
+                        posterList.add(resultList.get(i).getPoster_path());
                     }
-                    mMoviePosterAdapter = new MoviePosterAdapter(posterUrl, context);
+                    mMoviePosterAdapter.clear();
+                    mMoviePosterAdapter.addAll(posterList);
+                    mMoviePosterAdapter.notifyDataSetInvalidated();
                 }
 
                 @Override
