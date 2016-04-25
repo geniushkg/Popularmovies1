@@ -34,7 +34,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivityFragment extends Fragment {
     public static final String API_KEY = BuildConfig.TMDB_API;
     public static final String BASE_URL = "http://api.themoviedb.org/3/";
-    MoviePosterAdapter mMoviePosterAdapter = null;
+     MoviePosterAdapter mMoviePosterAdapter = null;
     @InjectView(R.id.gridView_main)
     GridView gvMainFrag;
     private Retrofit retrofit;
@@ -56,7 +56,6 @@ public class MainActivityFragment extends Fragment {
         service = retrofit.create(TheMovieDbApiInterface.class);
         context = getActivity();
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
@@ -73,7 +72,6 @@ public class MainActivityFragment extends Fragment {
         updateMovieAdapter();
         return rootView;
     }
-
     private void updateMovieAdapter() {
         // fetch data , add to array
         // fetch data from shared prefrence
@@ -109,7 +107,6 @@ public class MainActivityFragment extends Fragment {
                 }
             });
         } else {
-
             Call<Popular> popularCall = service.getTopRatedMovies(API_KEY);
             popularCall.enqueue(new Callback<Popular>() {
                 @Override
@@ -127,7 +124,6 @@ public class MainActivityFragment extends Fragment {
                     mMoviePosterAdapter.addAll(posterList);
                     mMoviePosterAdapter.notifyDataSetInvalidated();
                 }
-
                 @Override
                 public void onFailure(Call<Popular> call, Throwable t) {
                     Log.d("TAG", "Network call failed , Retrofit on failed :" + t.getMessage());
