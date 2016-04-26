@@ -1,8 +1,9 @@
-package com.hardikgoswami.popularmovies1.util;
+package com.hardikgoswami.popularmovies1.rest;
+
+import com.hardikgoswami.popularmovies1.model.Popular;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**

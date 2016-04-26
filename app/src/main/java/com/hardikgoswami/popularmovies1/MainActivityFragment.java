@@ -13,9 +13,9 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.hardikgoswami.popularmovies1.util.MoviePosterAdapter;
-import com.hardikgoswami.popularmovies1.util.Popular;
-import com.hardikgoswami.popularmovies1.util.Result;
-import com.hardikgoswami.popularmovies1.util.TheMovieDbApiInterface;
+import com.hardikgoswami.popularmovies1.model.Popular;
+import com.hardikgoswami.popularmovies1.model.Result;
+import com.hardikgoswami.popularmovies1.rest.TheMovieDbApiInterface;
 
 import java.util.ArrayList;
 import java.util.List;

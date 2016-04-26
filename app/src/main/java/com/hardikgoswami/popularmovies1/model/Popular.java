@@ -1,5 +1,5 @@
 
-package com.hardikgoswami.popularmovies1.util;
+package com.hardikgoswami.popularmovies1.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
