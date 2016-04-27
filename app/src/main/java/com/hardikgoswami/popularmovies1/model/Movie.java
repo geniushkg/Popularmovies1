@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Result {
+public class Movie {
 
     private String poster_path;
     private Boolean adult;
@@ -25,7 +25,7 @@ public class Result {
 
     @Override
     public String toString() {
-        return "Result{" +
+        return "Movie{" +
                 "poster_path='" + poster_path + '\'' +
                 ", adult=" + adult +
                 ", overview='" + overview + '\'' +

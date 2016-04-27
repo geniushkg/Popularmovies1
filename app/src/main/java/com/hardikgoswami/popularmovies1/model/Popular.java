@@ -10,7 +10,7 @@ import java.util.Map;
 public class Popular {
 
     private Integer page;
-    private List<Result> results = new ArrayList<Result>();
+    private List<Movie> results = new ArrayList<Movie>();
     private Integer totalResults;
     private Integer totalPages;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
@@ -38,7 +38,7 @@ public class Popular {
      * @return
      *     The results
      */
-    public List<Result> getResults() {
+    public List<Movie> getResults() {
         return results;
     }
 
@@ -47,7 +47,7 @@ public class Popular {
      * @param results
      *     The results
      */
-    public void setResults(List<Result> results) {
+    public void setResults(List<Movie> results) {
         this.results = results;
     }
 

@@ -11,7 +11,7 @@ import retrofit2.http.Query;
  */
 //http://api.themoviedb.org/3/movie/popular?api_key=361a356d738a66e728af762399fc25bd
 
-public interface TheMovieDbApiInterface {
+public interface TheMovieDbService {
     @GET("movie/popular")
     Call<Popular> getPopularMovies(@Query("api_key") String api_key);
 
