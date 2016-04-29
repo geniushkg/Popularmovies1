@@ -17,8 +17,12 @@ public class MovieActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
+        MovieFragment fragment = new MovieFragment();
+
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragment_container, fragment)
+                .commit();
     }
 
     @Override

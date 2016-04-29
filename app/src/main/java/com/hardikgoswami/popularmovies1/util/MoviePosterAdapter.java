@@ -1,8 +1,6 @@
 package com.hardikgoswami.popularmovies1.util;
 
 import android.content.Context;
-import android.text.Layout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,33 +8,42 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
 import com.hardikgoswami.popularmovies1.R;
+import com.hardikgoswami.popularmovies1.model.Movie;
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
-import java.util.zip.Inflater;
+import java.util.ArrayList;
 
 
-public class MoviePosterAdapter extends ArrayAdapter<String> {
+public class MoviePosterAdapter extends ArrayAdapter<Movie> {
     public static final String TAG = MoviePosterAdapter.class.getSimpleName();
-    List<String> mPosterUrls;
 
-    public MoviePosterAdapter(Context context, List<String> posterUrls) {
-        super(context, R.layout.grid_item, posterUrls);
+    public MoviePosterAdapter(Context context, ArrayList<Movie> posterUrls) {
+        super(context , 0, posterUrls);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        String posterUrl = getItem(position);
+        ViewHolder vh;
+        Movie movie = getItem(position);
+
         if (convertView == null) {
+            vh = new ViewHolder();
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.grid_item, parent,
                     false);
+            vh.ivPoster = (ImageView) convertView.findViewById(R.id.ivGidItemList);
+            convertView.setTag(vh);
+        } else {
+            vh = (ViewHolder) convertView.getTag();
         }
-        ImageView ivPoster = (ImageView) convertView.findViewById(R.id.ivGidItemList);
-        Log.d(TAG, posterUrl);
+
         Picasso.with(getContext())
-                .load(posterUrl)
-                .into(ivPoster);
+                .load(movie.getPoster_path())
+                .into(vh.ivPoster);
 
         return convertView;
+    }
+
+    static class ViewHolder {
+        ImageView ivPoster;
     }
 }

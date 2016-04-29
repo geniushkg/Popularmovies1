@@ -11,10 +11,11 @@ import java.util.List;
  */
 public interface MoviesContract {
     interface View {
-        void showMovies(List<Movie> movies);
+        void showMovies(ArrayList<Movie> movies);
     }
 
     interface Presenter {
         void loadMovies();
     }
 }
+

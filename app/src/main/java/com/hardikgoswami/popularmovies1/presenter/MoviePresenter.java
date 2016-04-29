@@ -9,6 +9,7 @@ import com.hardikgoswami.popularmovies1.rest.TheMovieDbService;
 
 import java.io.IOError;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -34,7 +35,7 @@ public class MoviePresenter implements MoviesContract.Presenter {
                 if(response.isSuccessful()){
                     Popular popularMovies = response.body();
                     List<Movie> movieList = popularMovies.getResults();
-                    mView.showMovies(movieList);
+                    mView.showMovies(new ArrayList<Movie>(movieList));
                 }
             }
 
